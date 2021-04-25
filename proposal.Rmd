@@ -1,0 +1,56 @@
+---
+title: "Prediction of Survival on Titanic"
+author: "Tensorflow 2.0"
+date: "11/02/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load-packages, message=FALSE}
+library(tidyverse)
+```
+
+```{r load-data, message=FALSE}
+titanic <- read_csv("data/titanic.csv")
+```
+
+## Section 1 Introduction
+
+Titanic, in full Royal Mail Ship (RMS) Titanic, was a British Passenger Luxury Liner that sank on April 14-15, 1912 during its maiden voyage, en route to New York City from Southampton, England killing about 1500 passengers and ship personnel. Being one of the most famous tragedies in modern history, it has inspired numerous stories, several films, and a musical and has been the subject of much scholarship and scientific speculation.   
+
+In this project, we aim to explore the presence of factors, if any, that could have predicted the likelihood of any passenger to survive in the shipwreck. We hypothesize that the female and passengers from upper-class were more likely to survive the shipwreck.  
+
+
+## Section 2 Data Description
+
+The dataset consists of the information of `r nrow(titanic)` passengers that traveled in the Titanic. The `r ncol(titanic)` columns included in the dataset are `r names(titanic)`.
+
+Here are the information of each of the columns in detail:
+
+pclass: The class on which the passenger was traveling.    
+survived: The survival status of the passenger.    
+name: The name of the passenger.  
+sex: The sex of the passenger.  
+age: The age of the passenger.  
+sibsp: The number of siblings/spouses the passenger had aboard.    
+parch: The number of parents/children the passenger had aboard.     
+ticket: The ticket number of the passenger.  
+fare: The price of the ticket of the passenger.  
+cabin: The cabin address of the passenger.  
+embarked: The port from which the passenger had embarked.  
+boat: The lifeboat number of the passenger (if survived).  
+body: The body number of the passenger (if not survived and body recovered).  
+home.dest: The home/destination of the passenger.  
+
+While we retrieved the dataset from [data.world](https://data.world/nrippner/titanic-disaster-dataset), the principal source for data about Titanic passengers is the Encyclopedia Titanica (by the method of web-scraping) which consists of the facts and information of the real people that designed, built and sailed on the RMS Titanic.     
+
+## Section 3 Glimpse of Data
+
+Now, lets have a quick glimpse of our dataset. 
+
+```{r data-glimpse}
+glimpse(titanic)
+```
